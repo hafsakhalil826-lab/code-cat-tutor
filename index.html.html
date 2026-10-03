@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Professor Whiskers: Learn Coding</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg1:#f1ebff;--bg2:#d9ccff;--card:#ffffffcc;--ink:#3b2a24;--accent:#7c4dff;--code:#241a45;--codeink:#ffd9a8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#1d1730;--bg2:#2e2148;--card:#3a2d5acc;--ink:#f6e9ff;--accent:#b79bff;--code:#120d20;--codeink:#ffd9a8}}
+:root[data-theme="dark"]{--bg1:#1d1730;--bg2:#2e2148;--card:#3a2d5acc;--ink:#f6e9ff;--accent:#b79bff;--code:#120d20;--codeink:#ffd9a8}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;font-family:"Segoe UI",system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--bg1),var(--bg2));}
+main{max-width:760px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+h1{font-size:1.3rem;margin:0}
+.ctl button{margin-left:6px}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:8px 14px;background:var(--accent);color:#fff;font-weight:600}
+button.alt{background:var(--card);color:var(--ink);border:1px solid #0002}
+button.on{outline:3px solid var(--accent)}
+.stage{display:flex;align-items:flex-end;gap:12px;margin-top:10px;flex-wrap:wrap;justify-content:center}
+svg{width:200px;max-width:45%;flex:none;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.bubble{flex:1;min-width:240px;background:var(--card);border-radius:18px;padding:14px 16px;position:relative;min-height:110px;box-shadow:0 6px 20px #0002}
+.bubble h2{margin:0 0 6px;font-size:1rem;color:var(--accent)}
+.bubble p{margin:0;line-height:1.5;min-height:3em}
+pre{background:var(--code);color:var(--codeink);padding:10px 12px;border-radius:10px;overflow-x:auto;margin:10px 0 0;font-size:.85rem;display:none}
+.nav{display:flex;gap:8px;margin-top:10px;align-items:center}
+.dots{margin-left:auto;font-size:.85rem;opacity:.7}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:16px}
+.topics button{background:var(--card);color:var(--ink);border:1px solid #0002;border-radius:14px;text-align:left}
+.topics button.act{background:var(--accent);color:#fff}
+#tail{transform-box:fill-box;transform-origin:10% 90%;animation:wag 1.6s ease-in-out infinite}
+@keyframes wag{50%{transform:rotate(14deg)}}
+#eyes{transform-box:fill-box;transform-origin:center;animation:blink 4s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+#mouth{transform-box:fill-box;transform-origin:center}
+.talk #mouth{animation:yap .22s infinite alternate}
+@keyframes yap{to{transform:scaleY(2.2)}}
+.note{font-size:.8rem;opacity:.7;margin-top:14px;text-align:center}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>🐱 Professor Whiskers' Code Class</h1>
+  <div class="ctl">
+    <button id="music" class="alt">🎵 Music: off</button>
+    <button id="voice" class="alt">🗣️ Voice: off</button>
+  </div>
+</header>
+
+<div class="stage" id="stage">
+<svg viewBox="0 0 220 235" aria-label="Cute purple cat professor">
+  <g id="tail"><path d="M150 205 C205 205 212 140 188 128" stroke="#34236b" stroke-width="19" fill="none" stroke-linecap="round"/>
+  <path d="M150 205 C205 205 212 140 188 128" stroke="#8b6fd6" stroke-width="13" fill="none" stroke-linecap="round"/>
+  <path d="M190 134 C184 130 186 126 188 128" stroke="#fff" stroke-width="13" fill="none" stroke-linecap="round"/></g>
+  <g stroke="#34236b" stroke-width="3">
+  <path d="M68 150 C60 200 70 222 110 222 C150 222 160 200 152 150 Z" fill="#8b6fd6"/>
+  <ellipse cx="90" cy="220" rx="17" ry="9" fill="#fff"/><ellipse cx="130" cy="220" rx="17" ry="9" fill="#fff"/>
+  <polygon points="58,70 56,22 98,48" fill="#8b6fd6"/><polygon points="162,70 164,22 122,48" fill="#8b6fd6"/>
+  <ellipse cx="110" cy="100" rx="64" ry="52" fill="#8b6fd6"/></g>
+  <polygon points="65,60 64,34 87,49" fill="#ffb3d1"/><polygon points="155,60 156,34 133,49" fill="#ffb3d1"/>
+  <ellipse cx="110" cy="185" rx="17" ry="32" fill="#fff"/>
+  <ellipse cx="110" cy="124" rx="46" ry="22" fill="#fff"/>
+  <ellipse cx="58" cy="116" rx="16" ry="14" fill="#fff"/><ellipse cx="162" cy="116" rx="16" ry="14" fill="#fff"/>
+  <path d="M74 72q8-7 16 0M130 72q8-7 16 0" stroke="#34236b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <g id="eyes"><circle cx="82" cy="100" r="13" fill="#1d1a6e"/><circle cx="138" cy="100" r="13" fill="#1d1a6e"/>
+  <circle cx="86" cy="95" r="4.5" fill="#fff"/><circle cx="142" cy="95" r="4.5" fill="#fff"/>
+  <circle cx="79" cy="105" r="2" fill="#fff"/><circle cx="135" cy="105" r="2" fill="#fff"/></g>
+  <polygon points="104,115 116,115 110,122" fill="#1d1a6e"/>
+  <ellipse id="mouth" cx="110" cy="130" rx="7" ry="2.5" fill="#7a2a5a"/>
+  <path d="M98 126q6 7 12 0q6 7 12 0" stroke="#1d1a6e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+</svg>
+<div class="bubble" aria-live="polite">
+  <h2 id="title">Meow! Pick a topic 👇</h2>
+  <p id="text"></p>
+  <pre id="code"></pre>
+  <div class="nav">
+    <button id="prev" class="alt">◀ Back</button>
+    <button id="next">Next ▶</button>
+    <span class="dots" id="dots"></span>
+  </div>
+</div>
+</div>
+
+<div class="topics" id="topics"></div>
+<p class="note">Tip: turn on music and voice, then pick a topic. Music starts only after you tap, because browsers block autoplay.</p>
+</main>
+
+<script>
+const T={
+"Variables":[["A variable is a labelled box. You put a value inside and use the label later.","age = 20\nname = \"Hafsa\"\nprint(name, age)"],["You can change what is in the box any time. That is why it is called variable.","score = 0\nscore = score + 10\nprint(score)  # 10"]],
+"Loops":[["Loops repeat work so you do not copy-paste. Like me chasing a laser dot again and again.","for i in range(3):\n    print(\"meow\", i)"],["A while loop keeps going until a condition becomes false. Be careful: no exit means forever!","n = 3\nwhile n > 0:\n    print(n)\n    n -= 1"]],
+"Functions":[["A function is a reusable recipe. Give it ingredients (inputs), get a dish (output).","def add(a, b):\n    return a + b"],["Call it whenever you need it. Write once, use many times.","print(add(2, 3))  # 5"]],
+"Arrays & Lists":[["A list is a row of boxes, numbered from 0. The first item is index 0, not 1!","fish = [\"tuna\", \"salmon\", \"cod\"]\nprint(fish[0])  # tuna"],["You can add, remove and loop over items.","fish.append(\"trout\")\nfor f in fish:\n    print(f)"]],
+"Big-O":[["Big-O tells how slow your code gets as data grows. O(1) is instant, O(n) is one pass, O(n²) is a pass inside a pass.","# O(n): one loop\nfor x in nums: ..."],["Hashing turns an O(n) search into O(1). That is why HashMaps are so popular in interviews!","seen = {}\nif need in seen: ...  # O(1)"]],
+"CS Course Overview":[["A CS degree starts with Programming Fundamentals: variables, loops, functions. Then Object-Oriented Programming and Discrete Math.",""],["Next come Data Structures and Algorithms (the interview favourite), Databases (SQL), Operating Systems and Computer Networks.",""],["Later: Software Engineering, AI and Machine Learning, Web and Mobile, and a Final Year Project. Pick one area and build real projects. Purrfect!",""]]
+};
+const $=id=>document.getElementById(id);
+let topic=null,step=0,timer=null,voiceOn=false;
+const tp=$("topics");
+Object.keys(T).forEach(k=>{const b=document.createElement("button");b.textContent=k;b.onclick=()=>pick(k,b);tp.appendChild(b)});
+
+function speak(t){
+  clearInterval(timer);$("text").textContent="";$("stage").classList.add("talk");
+  if(voiceOn&&window.speechSynthesis){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.pitch=1.6;u.rate=1.05;speechSynthesis.speak(u)}
+  let i=0;timer=setInterval(()=>{$("text").textContent=t.slice(0,++i);if(i>=t.length){clearInterval(timer);$("stage").classList.remove("talk")}},28);
+}
+function show(){
+  const [t,c]=T[topic][step];
+  $("title").textContent=topic;speak(t);
+  const p=$("code");p.style.display=c?"block":"none";p.textContent=c;
+  $("dots").textContent=(step+1)+" / "+T[topic].length;
+  $("prev").disabled=step===0;$("next").disabled=step===T[topic].length-1;
+}
+function pick(k,b){topic=k;step=0;[...tp.children].forEach(x=>x.classList.remove("act"));b.classList.add("act");show()}
+$("next").onclick=()=>{if(topic&&step<T[topic].length-1){step++;show()}};
+$("prev").onclick=()=>{if(topic&&step>0){step--;show()}};
+$("voice").onclick=e=>{voiceOn=!voiceOn;e.target.textContent="🗣️ Voice: "+(voiceOn?"on":"off");e.target.classList.toggle("on",voiceOn);if(!voiceOn&&window.speechSynthesis)speechSynthesis.cancel()};
+
+/* Lo-fi music made with Web Audio: no files needed */
+let ctx=null,tick=null,beat=0;
+const chords=[[220,261.6,329.6],[174.6,220,261.6],[261.6,329.6,392],[196,246.9,293.7]];
+function tone(f,t,d,v,type){const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=f;
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+  o.connect(g).connect(ctx.destination);o.start(t);o.stop(t+d+.05)}
+function step16(){
+  const t=ctx.currentTime+.05,ch=chords[Math.floor(beat/8)%4];
+  if(beat%8===0){tone(ch[0]/2,t,3.4,.12,"sine");ch.forEach(f=>tone(f,t,3.2,.04,"triangle"))}
+  if(beat%2===0)tone(ch[Math.floor(Math.random()*3)]*2,t,.9,.05,"triangle");
+  beat++;
+}
+$("music").onclick=e=>{
+  if(!ctx)ctx=new (window.AudioContext||window.webkitAudioContext)();
+  if(tick){clearInterval(tick);tick=null;e.target.textContent="🎵 Music: off";e.target.classList.remove("on")}
+  else{ctx.resume();tick=setInterval(step16,420);e.target.textContent="🎵 Music: on";e.target.classList.add("on")}
+};
+speak("Meow! I am Professor Whiskers. Pick a topic below and I will explain it in a purrfectly simple way.");
+</script>
+</body>
+</html>
